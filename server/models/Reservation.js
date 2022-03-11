@@ -20,8 +20,18 @@ const reservationSchema = new Schema({
     type: Int,
     required: true,
   },
-  restaurant: [restaurantSchema],
-  user: [userSchema],
+  restaurant: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+    },
+  ],
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Reservation = model("Reservation", reservationSchema);
