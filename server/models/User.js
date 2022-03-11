@@ -1,7 +1,13 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
+const Restaurant = require("./Restaurant");
 
 const userSchema = new Schema({
+  full_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   username: {
     type: String,
     required: true,
@@ -23,6 +29,9 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  restaurant: [restaurantSchema],
+
+  favorites: [restaurantSchema],
 });
 
 userSchema.pre("save", async function (next) {
