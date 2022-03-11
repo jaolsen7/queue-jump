@@ -29,9 +29,16 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  restaurant: [restaurantSchema],
-
-  favorites: [restaurantSchema],
+  restaurant: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+  },
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
