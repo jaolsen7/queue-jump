@@ -32,23 +32,25 @@ const typeDefs = gql`
     user: User
   }
 
-  input ReservationInput {
+  input BookReservationInput {
     phone_number: String!
-    time: String!
-    location: String!
     party_size: Int!
-    restaurantId: ID!
-    userId: ID
+    userId: ID!
   }
-  
+
   type Query {
     "Find the logged in user."
     me: User
+    reservations: [Reservation]!
+    reservation(reservationId: ID!): Reservation
+    favorites: [Restaurant]
   }
 
   type Mutation {
     createUser(email: String!, password: String!, username: String!): Auth
     login(email: String!, password: String!): Auth
+    bookReservation(reservationData: BookReservationInput!): Reservation
+    cancelReservation(reservationId: ID!): Reservation
   }
 
   type Auth {
