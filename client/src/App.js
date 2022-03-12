@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
 import Favorites from "./pages/Favorites";
+import Reservations from "./pages/Reservations";
 
 function App() {
   return (
