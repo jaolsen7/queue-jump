@@ -36,6 +36,8 @@ const typeDefs = gql`
     phone_number: String!
     party_size: Int!
     userId: ID!
+    location: String! 
+    time: String! 
   }
 
   type Query {
@@ -47,7 +49,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser(email: String!, password: String!, username: String!): Auth
+    createUser( full_name: String!, email: String!, password: String!, username: String!): Auth
     login(email: String!, password: String!): Auth
     bookReservation(reservationData: BookReservationInput!): Reservation
     cancelReservation(reservationId: ID!): Reservation

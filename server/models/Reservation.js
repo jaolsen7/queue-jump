@@ -17,7 +17,7 @@ const reservationSchema = new Schema({
     required: true,
   },
   party_size: {
-    type: Int,
+    type: Number,
     required: true,
   },
   restaurant: {

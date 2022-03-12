@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Reservation, Restaurant } = require("../models");
 const { signToken } = require("../util/auth");
 const { dateScalar } = require("./customScalars");
 
@@ -17,6 +17,9 @@ const resolvers = {
       }
       return User.findOne({ email: ctx.user.email });
     },
+    reservations: async (parent, args, context) => {},
+    reservation: async (parent, args, context) => {},
+    favorites: async (parent, args, context) => {},
   },
   Mutation: {
     createUser: async (parent, args) => {
@@ -46,6 +49,38 @@ const resolvers = {
       user.lastLogin = Date.now();
       await user.save();
       return { token, user };
+    },
+    bookReservation: async (parent, { reservationBook }, context) => {
+      if (context.user) {
+        const reservation = await Reservation.create({
+          reservationBook,
+          reservationAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { reservation: reservation._id } }
+        );
+
+        return reservation;
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    cancelReservation: async (parent, { reservationId } , context) => {
+      if (context.user) {
+        const reservation = await Reservation.findOneAndDelete({
+          _id: reservationId,
+          reservationAuthor: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { reservations: reservation._id } }
+        );
+
+        return reservation;
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };
