@@ -14,30 +14,25 @@ export default function Navbar() {
 <img src={require('./QueueJumpLogo.png')} alt={"Logo"} className="w-100 d-block"/>
 
 
-return (
+
   <>
     <Button variant="primary" onClick={handleShow}>
-      Launch demo modal
+      Open Menu
     </Button>
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>User Options</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body></Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        {/* <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
         <Button variant="primary" onClick={handleClose}>
           Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>
-);
-}
-{/* <NavLink to="/" className="navbar-link">
+        </Button> */}
+<NavLink to="/" className="navbar-link">
         Home
       </NavLink>
       {isLoggedIn ? (
@@ -58,7 +53,10 @@ return (
             Signup
           </NavLink>
         </>
-      )} */}
+      )}
+      </Modal.Footer>
+    </Modal>
+  </>
     </nav>
   );
 }
