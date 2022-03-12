@@ -36,7 +36,7 @@ function App() {
     //     </AuthProvider>
     //   </Router>
     // </ApolloProvider>
-    <Reservations />
+    <Favorites />
   );
 }
 
