@@ -12,7 +12,7 @@ export default function favorites() {
             </Container>
           </div>
           <Container>
-                  <Card>
+                  <Card className="col-12 m-3">
                     <Card.Img variant="left" src={sampleRestaurant1} className="w-100 p-2" />
                     <Card.Body>
                       <Card.Title>Jeune Et Jolie</Card.Title>
