@@ -8,6 +8,7 @@ import ProtectedPageExample from "./pages/ProtectedPageExample";
 import SignUp from "./pages/SignUp";
 import { client } from "./util/apolloClient";
 import { AuthProvider } from "./util/auth";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (

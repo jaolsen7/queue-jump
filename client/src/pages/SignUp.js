@@ -35,13 +35,18 @@ export default function SignUp() {
     }
   }, [error]);
 
-  const handleInputChange = (evt) => {
-    const { name, value } = evt.target;
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     signup(formState);
   };
 
