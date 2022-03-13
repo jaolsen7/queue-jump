@@ -11,12 +11,11 @@ import ProtectedPageExample from "./pages/ProtectedPageExample";
 import SignUp from "./pages/SignUp";
 import Reservations from "./pages/Reservations";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import QueueJumpLogo from "../src/components/QueueJumpLogo.png";
 
 function App() {
   return (
     <div>
-    <img src={QueueJumpLogo} alt={"The logo"} className="col-4" />
+    <Navbar />
     {/* <ApolloProvider client={client}>
       <Router>
         <AuthProvider>
@@ -39,7 +38,7 @@ function App() {
         </AuthProvider>
       </Router>
     </ApolloProvider> */}
-    <Favorites />
+    <Home />
     </div>
   );
 }

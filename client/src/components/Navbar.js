@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../util/auth";
 import { Modal, Button } from "react-bootstrap"
 import { useState } from "react";
-// import "./Navbar.css";
+import QueueJumpLogo from "./QueueJumpLogo.png";
 
 export default function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -11,11 +11,8 @@ export default function Navbar() {
   const handleShow = () => setShow(true);
   return (
     <nav className="navbar w-100">
-<img src={require('./QueueJumpLogo.png')} alt={"Logo"} className="w-100 d-block"/>
-
-
-
   <>
+      <img src={QueueJumpLogo} alt={"The logo"} className="col-4" />
     <Button variant="primary" onClick={handleShow}>
       Open Menu
     </Button>
