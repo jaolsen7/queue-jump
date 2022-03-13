@@ -12,11 +12,11 @@ import SignUp from "./pages/SignUp";
 import Reservations from "./pages/Reservations";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() {
   return (
     <div>
-    <Navbar />
-    {/* <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <Router>
         <AuthProvider>
           <Navbar />
@@ -26,18 +26,18 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             {/* Use <RequiredAuth> for pages that should only be accessible to a
             user that has logged in.*/}
-            {/* <Route
+            <Route
               path="/protected"
               element={
                 <RequireAuth>
                   <ProtectedPageExample />
-                </RequireAuth> */}
-              {/* }
+                </RequireAuth>
+              }
             />
           </Routes>
         </AuthProvider>
       </Router>
-    </ApolloProvider> */}
+    </ApolloProvider>
     <Home />
     </div>
   );
