@@ -56,7 +56,7 @@ export default function SignUp() {
   }
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1 className="bg-success text-light p-2">Sign Up</h1>
       <hr />
       <form onSubmit={handleSubmit}>
         <div style={styles.formControl}>

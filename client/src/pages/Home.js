@@ -8,7 +8,7 @@ export default function Home() {
   const { isLoggedIn, user } = useAuth();
   return (
     <div>
-      <div className="jumbotron text-light bg-success">
+      <div className="jumbotron text-light bg-success p-2">
         <Container>
           {/* TODO: display logged in user's username */}
           <h1>Welcome {isLoggedIn ? user.username : "Guest"}!</h1>

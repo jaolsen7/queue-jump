@@ -23,6 +23,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/Reservations" element={<Reservations />} />
+            <Route path="/favorites" element={<Favorites />} />
             {/* Use <RequiredAuth> for pages that should only be accessible to a
             user that has logged in.*/}
             <Route
@@ -38,7 +40,6 @@ function App() {
         </AuthProvider>
       </Router>
     </ApolloProvider>
-    {/* <Home /> */}
     </div>
   );
 }
