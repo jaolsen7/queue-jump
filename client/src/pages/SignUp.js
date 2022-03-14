@@ -56,7 +56,7 @@ export default function SignUp() {
   }
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1 className="bg-success text-light p-2">Sign Up</h1>
       <hr />
       <form onSubmit={handleSubmit}>
         <div style={styles.formControl}>
@@ -103,7 +103,7 @@ export default function SignUp() {
           />
         </div>
         <div style={styles.formControl}>
-          <button disabled={loading} type="submit">
+          <button disabled={loading} className="bg-success rounded text-light col-1" type="submit">
             {loading ? "Loading..." : "Submit"}
           </button>
         </div>

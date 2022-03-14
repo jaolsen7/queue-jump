@@ -7,7 +7,7 @@ import sampleRestaurant1 from './sampleRestaurant1.webp'
 export default function Reservations() {
     return (
         <>
-          <div className='jumbotron text-light bg-success'>
+          <div className='jumbotron text-light bg-success p-2'>
             <Container>
               <h1>Choose a Reservation</h1>
             </Container>
