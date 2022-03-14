@@ -1,0 +1,20 @@
+[
+  {
+    "restaurant_name": "Common Stock",
+    "food_type": "American",
+    "description": "Wow this is eatery is great!",
+    "menu_link": "https://www.eatcommonstock.com/menu"
+  },
+  {
+    "restaurant_name": "Tajima Ramen",
+    "food_type": ["Japanese", "Ramen", "Noodles"],
+    "description": "Such great noods!",
+    "menu_link": "https://tajimasandiego.com/tajima-convoy-food-menu/"
+  },
+  {
+    "restaurant_name": "King & Queens Cantina",
+    "food_type": ["Mexican", "Cocktails", "Catering"],
+    "description": "Wow this is eatery is great!",
+    "menu_link": "https://kingandqueencantina.com/san-diego-kqc/"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "phone_number": "619-310-5298",
+    "time": "5:00 pm",
+    "location": "5th Ave, Hillcrest",
+    "party_size": 2,
+    "userId": ""
+  },
+  {
+    "phone_number": "(619)269-0838",
+    "time": "7:30 pm",
+    "location": "Convoy",
+    "party_size": 4,
+    "userId": ""
+  },
+  {
+    "phone_number": "(619) 756-7864",
+    "time": "4:20 pm",
+    "location": "Downtown, San Diego",
+    "party_size": 12,
+    "userId": ""
+  }
+]

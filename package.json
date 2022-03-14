@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
+    "seed": "node server/seeds/seed.js",
     "develop": "concurrently -c magenta,cyan \"npm:server\" \"npm:react\"",
     "react": "cd client && npm start",
     "server": "cd server && npm run watch",
