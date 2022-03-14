@@ -53,24 +53,24 @@ const resolvers = {
       await user.save();
       return { token, user };
     },
-    addFavorite: async (parent, { restaurantId }, context) => {  
-      if (context.user) {
-        return await User.findOneAndUpdate(
-          {_id: context.user._id},
-          { $addToSet: { favorites: restaurantId }},
-        ).populate('favorites')        
-      }
-      throw new AuthenticationError("You need to be logged in to favorite!");
-    },
-    removeFavorite: async (parent, { restaurantId }, context) => {  
-      if (context.user) {
-        return await User.findOneAndUpdate(
-          {_id: context.user._id},
-          { $pull: { favorites: restaurantId }},
-        ).populate('favorites')        
-      }
-      throw new AuthenticationError("You need to be logged in to remove a favorite!");
-    },
+    // addFavorite: async (parent, { restaurantId }, context) => {  
+    //   if (context.user) {
+    //     return await User.findOneAndUpdate(
+    //       {_id: context.user._id},
+    //       { $addToSet: { favorites: restaurantId }},
+    //     ).populate('favorites')        
+    //   }
+    //   throw new AuthenticationError("You need to be logged in to favorite!");
+    // },
+    // removeFavorite: async (parent, { restaurantId }, context) => {  
+    //   if (context.user) {
+    //     return await User.findOneAndUpdate(
+    //       {_id: context.user._id},
+    //       { $pull: { favorites: restaurantId }},
+    //     ).populate('favorites')        
+    //   }
+    //   throw new AuthenticationError("You need to be logged in to remove a favorite!");
+    // },
     bookReservation: async (parent, { args }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
