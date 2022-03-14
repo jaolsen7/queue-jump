@@ -2,9 +2,11 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
+const { resolveReadonlyArrayThunk } = require("graphql");
 const { User, Reservation, Restaurant } = require("../models");
 const { signToken } = require("../util/auth");
 const { dateScalar } = require("./customScalars");
+const { Types } = require("mongoose"); 
 
 const resolvers = {
   Date: dateScalar,
@@ -50,33 +52,40 @@ const resolvers = {
       await user.save();
       return { token, user };
     },
-    bookReservation: async (parent, { args }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          {
-            $addToSet: {
-              savedReservation: {
-                party_size,
-                userId,
-                location,
-                time,
-              },
-            },
-          },
-          { new: true }
-        );
-
-        return updatedUser;
+    bookReservation: async (parent, { reservationData }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("You need to be logged in!");
       }
-
-      throw new AuthenticationError("You need to be logged in!");
+      
+      const reservation = await Reservation.findOne({
+        _id: reservationData.reservation_id,
+      });
+      if (!reservation) {
+        return null;
+      }
+      
+      
+      // if reservation is already claim return null
+      if (reservation.user) {
+        return null;
+      }
+      // reservation.user = context.user_id
+      reservation.party_size = reservationData.party_size
+      reservation.set("user", context.user._id)
+      await reservation.save(); 
+      await reservation.populate(["user", "restaurant"]); 
+      return reservation
     },
     cancelReservation: async (parent, { reservationId }, context) => {
       if (context.user) {
+        const reservation = await Reservation.findOneAndDelete({
+          _id: reservationId,
+          reservationAuthor: context.user.username,
+        });
+
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedReservation: { reservationId } } },
+          { $pull: { savedReservation: reservation._id } },
           { new: true }
         );
 
