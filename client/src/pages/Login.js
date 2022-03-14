@@ -85,7 +85,7 @@ export default function Login() {
           />
         </div>
         <div style={styles.formControl}>
-          <button disabled={loading} type="submit">
+          <button disabled={loading} className="bg-success rounded text-light col-1" type="submit">
             {loading ? "Loading..." : "Submit"}
           </button>
         </div>
