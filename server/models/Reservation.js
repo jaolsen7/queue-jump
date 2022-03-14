@@ -2,12 +2,6 @@ const { Schema, model } = require("mongoose");
 const User = require("./User");
 
 const reservationSchema = new Schema({
-  phone_number: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im],
-  },
   time: {
     type: String,
     required: true,
@@ -21,12 +15,12 @@ const reservationSchema = new Schema({
     required: true,
   },
   restaurant: {
-      type: Schema.Types.ObjectId,
-      ref: "Restaurant",
+    type: Schema.Types.ObjectId,
+    ref: "Restaurant",
   },
   user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
