@@ -6,6 +6,7 @@ const typeDefs = gql`
 
   type User {
     _id: ID!
+    phone_number: String!
     full_name: String!
     username: String!
     email: String!
@@ -24,7 +25,6 @@ const typeDefs = gql`
 
   type Reservation {
     _id: ID!
-    phone_number: String!
     time: String!
     location: String!
     party_size: Int!
@@ -33,11 +33,10 @@ const typeDefs = gql`
   }
 
   input BookReservationInput {
-    phone_number: String!
     party_size: Int!
     userId: ID!
-    location: String! 
-    time: String! 
+    location: String!
+    time: String!
   }
 
   type Query {
@@ -49,7 +48,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createUser( full_name: String!, email: String!, password: String!, username: String!): Auth
+    createUser(
+      phone_number: String!
+      full_name: String!
+      email: String!
+      password: String!
+      username: String!
+    ): Auth
     login(email: String!, password: String!): Auth
     bookReservation(reservationData: BookReservationInput!): Reservation
     cancelReservation(reservationId: ID!): Reservation

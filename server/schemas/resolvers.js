@@ -50,36 +50,39 @@ const resolvers = {
       await user.save();
       return { token, user };
     },
-    bookReservation: async (parent, { reservationBook }, context) => {
+    bookReservation: async (parent, { args }, context) => {
       if (context.user) {
-        const reservation = await Reservation.create({
-          reservationBook,
-          reservationAuthor: context.user.username,
-        });
-
-        await User.findOneAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { reservation: reservation._id } }
+          {
+            $addToSet: {
+              savedReservation: {
+                party_size,
+                userId,
+                location,
+                time,
+              },
+            },
+          },
+          { new: true }
         );
 
-        return reservation;
+        return updatedUser;
       }
+
       throw new AuthenticationError("You need to be logged in!");
     },
-    cancelReservation: async (parent, { reservationId } , context) => {
+    cancelReservation: async (parent, { reservationId }, context) => {
       if (context.user) {
-        const reservation = await Reservation.findOneAndDelete({
-          _id: reservationId,
-          reservationAuthor: context.user.username,
-        });
-
-        await User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { reservations: reservation._id } }
+          { $pull: { savedReservation: { reservationId } } },
+          { new: true }
         );
 
-        return reservation;
+        return updatedUser;
       }
+
       throw new AuthenticationError("You need to be logged in!");
     },
   },
