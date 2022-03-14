@@ -7,7 +7,6 @@ import Favorites from "./pages/Favorites";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import ProtectedPageExample from "./pages/ProtectedPageExample";
 import SignUp from "./pages/SignUp";
 import Reservations from "./pages/Reservations";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,7 +29,8 @@ function App() {
               path="/protected"
               element={
                 <RequireAuth>
-                  <ProtectedPageExample />
+                  <Favorites />
+                  <Reservations />
                 </RequireAuth>
               }
             />
@@ -38,7 +38,7 @@ function App() {
         </AuthProvider>
       </Router>
     </ApolloProvider>
-    <Home />
+    {/* <Home /> */}
     </div>
   );
 }
