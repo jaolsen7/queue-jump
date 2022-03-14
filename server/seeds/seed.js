@@ -8,7 +8,7 @@ db.once('open', async () => {
   await Restaurant.deleteMany({});
   await Reservation.deleteMany({});
 
-  const restaurants = await Restaurant.create(restaurantData);
+  const restaurants = await Restaurant.insertMany(restaurantData);
   const reservations = await Reservation.insertMany(reservationData);
 
   console.log('Restaurants and Reservations seeded!');
