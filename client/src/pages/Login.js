@@ -53,7 +53,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 className="bg-success text-light p-2">Login</h1>
       <hr />
       <form onSubmit={handleSubmit}>
         <div style={styles.formControl}>
