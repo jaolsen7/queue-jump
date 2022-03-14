@@ -38,7 +38,7 @@ function App() {
         </AuthProvider>
       </Router>
     </ApolloProvider>
-    <Home />
+    {/* <Home /> */}
     </div>
   );
 }

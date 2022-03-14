@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../util/auth";
-import { Modal, Button } from "react-bootstrap"
+import { Modal, Button, NavDropdown } from "react-bootstrap"
 import { useState } from "react";
 import QueueJumpLogo from "./QueueJumpLogo.png";
 import userProfile from "./userProfile.jpg"
+import Login from "../pages/Login";
 
 export default function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -14,9 +15,18 @@ export default function Navbar() {
     <nav className="navbar w-100">
   <>
       <img src={QueueJumpLogo} alt={"The logo"} className="col-4" />
-    <img src={userProfile} alt={"Profile Menu"} onClick={handleShow} className="m-3 col-2" />
-
-    <Modal show={show} onHide={handleClose}>
+    
+    <NavDropdown  className="col-2" autoClose="outside" title={<img src={userProfile} alt="Profile Menu" onClick={handleShow} className="m-3 col-12" />}>
+        <NavDropdown.Item eventKey="4.1">Home</NavDropdown.Item>
+        <NavDropdown.Item eventKey="4.3">Search</NavDropdown.Item>
+        <NavDropdown.Item href="/login">Log In</NavDropdown.Item>
+        <NavDropdown.Item href="/SignUp">Sign Up</NavDropdown.Item>
+        <NavDropdown.Item eventKey="4.3">Favorites</NavDropdown.Item>
+        <NavDropdown.Item eventKey="4.3">Reservations</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item eventKey="4.4">Log Out</NavDropdown.Item>
+      </NavDropdown>
+    {/* <Modal show={show} onHide={handleClose}>
       <Modal.Header  className="bg-success bg-opacity-25 bg-gradient" closeButton>
         <Modal.Title>User Options</Modal.Title>
       </Modal.Header>
@@ -49,7 +59,7 @@ export default function Navbar() {
           Profile
         </Button>
       </Modal.Footer>
-    </Modal>
+    </Modal> */}
   </>
     </nav>
   );
