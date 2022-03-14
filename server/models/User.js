@@ -3,6 +3,12 @@ const bcrypt = require("bcrypt");
 const Restaurant = require("./Restaurant");
 
 const userSchema = new Schema({
+  phone_number: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/],
+  },
   full_name: {
     type: String,
     required: true,
