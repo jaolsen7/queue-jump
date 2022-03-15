@@ -18,6 +18,9 @@ const restaurantSchema = new Schema({
   menu_link: {
     type: String,
   },
+  photo_link: {
+    type: String,
+  },
 });
 
 const Restaurant = model("Restaurant", restaurantSchema);
