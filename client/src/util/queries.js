@@ -53,3 +53,16 @@ export const QUERY_RESERVATION = gql`
     }
   }
 `;
+
+export const QUERY_MYFAVORITES = gql`
+  query myFavorites {
+    me {
+      favorites {
+        restaurant_name
+        food_type
+        description
+        _id
+      }
+    }
+  }
+`;
