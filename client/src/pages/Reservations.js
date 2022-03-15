@@ -9,7 +9,7 @@ export default function Reservations() {
         <>
           <div className='jumbotron text-light bg-success p-2'>
             <Container>
-              <h1>Choose a Reservation</h1>
+              <h1>Your Reservations</h1>
             </Container>
           </div>
           <Container className="d-flex justify-content-center flex-wrap">
@@ -17,9 +17,9 @@ export default function Reservations() {
                   <Card.Img variant="top" src={sampleRestaurant1} className="w-100 p-2" />
                     <Card.Body className="">
                       <Card.Title>Jeunu Et Jolie</Card.Title>
-                      <Card.Text>A 4 person reservation is open at 12:30 PM</Card.Text>
-                     <Button size="large" variant="success" /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Take this Reservation!
+                      <Card.Text>Your party of 2 is confirmed for 12:30 PM</Card.Text>
+                     <Button size="large" variant="danger" /*onClick={() => handleDeleteBook(book.bookId)}*/>
+                        Cancel Reservation
                       </Button>
                     </Card.Body>
                   </Card>
@@ -27,9 +27,9 @@ export default function Reservations() {
                   <Card.Img variant="top" src={sampleRestaurant2} className="w-100 p-2" />
                     <Card.Body>
                       <Card.Title>Cafe Americano</Card.Title>
-                      <Card.Text>A reservation for 2 is open at 10 AM</Card.Text>
-                     <Button size="large" variant="success" /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Take this Reservation!
+                      <Card.Text>Your party of 4 is confirmed for 10 AM</Card.Text>
+                     <Button size="large" variant="danger" /*onClick={() => handleDeleteBook(book.bookId)}*/>
+                        Cancel Reservation
                       </Button>
                     </Card.Body>
                   </Card>
