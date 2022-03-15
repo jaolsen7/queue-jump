@@ -1,18 +1,14 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import sampleRestaurant2 from './sampleRestaurant2.jpg'
 import sampleRestaurant1 from './sampleRestaurant1.webp'
-import { ME, QUERY_MYFAVORITES } from "../util/queries";
+import { QUERY_MYFAVORITES } from "../util/queries";
 import { useQuery } from '@apollo/client';
 
 export default function Favorites() {
 
   const { loading, data } = useQuery(QUERY_MYFAVORITES);
-  console.log(data);
 
   const favorites = data?.me.favorites || []
-  favorites.forEach(element => {
-    console.log(element.restaurant_name);
-  });
 
     return (
         <>
@@ -30,7 +26,7 @@ export default function Favorites() {
                       <Card.Title>{favorites.restaurant_name}</Card.Title>
                       <Card.Text>{favorites.food_type}</Card.Text>
                       <Card.Text>{favorites.description}</Card.Text>
-                      <Button className='btn-block btn-success d-block' /*onClick={() => handleDeleteBook(book.bookId)}*/>
+                      <Button className='btn-block btn-success d-block'>
                         Check for Reservations!
                       </Button>
                       <Button className='btn-block btn-danger my-2' /*onClick={() => handleDeleteBook(book.bookId)}*/>
