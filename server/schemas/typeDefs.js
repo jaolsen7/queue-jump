@@ -43,6 +43,7 @@ const typeDefs = gql`
     reservations: [Reservation]!
     reservation(reservationId: ID!): Reservation
     favorites: [Restaurant]
+    restaurants: [Restaurant]
   }
 
   type Mutation {
