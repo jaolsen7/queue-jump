@@ -34,9 +34,7 @@ const typeDefs = gql`
 
   input BookReservationInput {
     party_size: Int!
-    userId: ID!
-    location: String!
-    time: String!
+    reservation_id: ID!
   }
 
   type Query {

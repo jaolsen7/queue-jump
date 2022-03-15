@@ -26,7 +26,6 @@ const authMiddleware = async ({ req }) => {
   if (req.headers.authorization) {
     token = token.split(" ").pop().trim();
   }
-
   if (!token) {
     return req;
   }
