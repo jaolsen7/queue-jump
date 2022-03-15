@@ -21,6 +21,7 @@ const typeDefs = gql`
     food_type: [String]!
     description: String!
     menu_link: String
+    photo_link: String
   }
 
   type Reservation {

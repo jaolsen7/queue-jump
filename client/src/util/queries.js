@@ -9,6 +9,7 @@ export const ME = gql`
         food_type
         description
         menu_link
+        photo_link
       }
     }
   }
@@ -26,6 +27,7 @@ export const QUERY_RESERVATIONS = gql`
         food_type
         description
         menu_link
+        photo_link
       }
     }
   }
@@ -43,6 +45,7 @@ export const QUERY_RESERVATION = gql`
         food_type
         description
         menu_link
+        photo_link
       }
       user {
         _id
@@ -62,6 +65,7 @@ export const QUERY_MYFAVORITES = gql`
         food_type
         description
         _id
+        photo_link
       }
     }
   }
@@ -75,5 +79,6 @@ query Restaurants {
     food_type
     description
     menu_link
+    photo_link
   }
 }`;
