@@ -55,6 +55,24 @@ const resolvers = {
       await user.save();
       return { token, user };
     },
+    addFavorite: async (parent, { restaurantId }, context) => {  
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {_id: context.user._id},
+          { $addToSet: { favorites: restaurantId }},
+        ).populate('favorites')        
+      }
+      throw new AuthenticationError("You need to be logged in to add a favorite");
+    },
+    removeFavorite: async (parent, { restaurantId }, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { favorites: restaurantId } })
+          .populate('favorites');  
+      }
+      throw new AuthenticationError("You need to be logged in to remove a favorite");
+    },
     bookReservation: async (parent, { reservationData }, context) => {
       if (!context.user) {
         throw new AuthenticationError("You need to be logged in!");

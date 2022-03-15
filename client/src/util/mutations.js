@@ -27,6 +27,19 @@ export const LOGIN = gql`
   }
 `;
 
+export const ADD_FAVORITE = gql`
+mutation addFavorite($restaurantId: ID!) {
+  addFavorite(restaurantId: $restaurantId) {
+    favorites {
+      _id
+      restaurant_name
+      food_type
+      description
+      menu_link
+    }
+  }
+}`;
+
 export const BOOK_RESERVATION = gql`
   mutation bookReservation($reservationData: BookReservationInput!) {
     bookReservation(reservationData: $reservationData) {
