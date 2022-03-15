@@ -54,6 +54,8 @@ const typeDefs = gql`
       username: String!
     ): Auth
     login(email: String!, password: String!): Auth
+    addFavorite(restaurantId: ID!): User
+    removeFavorite(restaurantId: ID!): User
     bookReservation(reservationData: BookReservationInput!): Reservation
     cancelReservation(reservationId: ID!): Reservation
   }

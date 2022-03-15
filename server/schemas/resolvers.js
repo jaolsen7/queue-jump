@@ -67,7 +67,6 @@ const resolvers = {
         return null;
       }
       
-      
       // if reservation is already claim return null
       if (reservation.user) {
         return null;
