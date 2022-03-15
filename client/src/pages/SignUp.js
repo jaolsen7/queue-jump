@@ -37,10 +37,6 @@ export default function SignUp() {
     }
   }, [error]);
 
-  // useEffect(() => {
-  //   return <Navigate to="/" replace />
-  // }, [isLoggedIn])
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));

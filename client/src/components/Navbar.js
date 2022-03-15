@@ -4,7 +4,6 @@ import { NavDropdown } from "react-bootstrap"
 import { useState } from "react";
 import QueueJumpLogo from "./QueueJumpLogo.png";
 import userProfile from "./userProfile.jpg"
-import logOut from "../pages/logout";
 
 export default function Navbar() {
   const { isLoggedIn, logout } = useAuth();
