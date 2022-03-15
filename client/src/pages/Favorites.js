@@ -10,6 +10,9 @@ export default function Favorites() {
   console.log(data);
 
   const favorites = data?.me.favorites || []
+  favorites.forEach(element => {
+    console.log(element.restaurant_name);
+  });
 
     return (
         <>
@@ -17,9 +20,11 @@ export default function Favorites() {
             <Container>
               <h1>Favorites</h1>
             </Container>
-          </div>
-          <Container>
-                  <Card className="col-12 m-3">
+
+              </div>
+              <Container>
+            {favorites.map((favorites) => (
+                  <Card key={favorites._id} className="col-12 m-3">
                     <Card.Img variant="left" src={sampleRestaurant1} className="w-100 p-2" />
                     <Card.Body>
                       <Card.Title>{favorites.restaurant_name}</Card.Title>
@@ -33,19 +38,7 @@ export default function Favorites() {
                       </Button>
                     </Card.Body>
                   </Card>
-                  <Card className="col-12 m-3">
-                  <Card.Img variant="top" src={sampleRestaurant2} className="w-100 p-2" />
-                    <Card.Body>
-                      <Card.Title>Cafe Americano</Card.Title>
-                      <Card.Text>Scenic sidewalk eatery. Enjoy pastries and coffee while you watch the city walk by</Card.Text>
-                     <Button className='btn-block btn-success d-block' /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Check for Reservations
-                      </Button>
-                      <Button className='btn-block btn-danger my-2' /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Remove From Favorites
-                      </Button>
-                    </Card.Body>
-                  </Card>
+            ))}
           </Container>
         </>
       );
