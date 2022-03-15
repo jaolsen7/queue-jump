@@ -66,3 +66,14 @@ export const QUERY_MYFAVORITES = gql`
     }
   }
 `;
+
+export const QUERY_RESTAURANTS = gql`
+query Restaurants {
+  restaurants {
+    _id
+    restaurant_name
+    food_type
+    description
+    menu_link
+  }
+}`;
