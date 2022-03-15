@@ -4,6 +4,7 @@ import { NavDropdown } from "react-bootstrap"
 import { useState } from "react";
 import QueueJumpLogo from "./QueueJumpLogo.png";
 import userProfile from "./userProfile.jpg"
+import logOut from "../pages/logout";
 
 export default function Navbar() {
   const { isLoggedIn, logout } = useAuth();
@@ -21,9 +22,8 @@ export default function Navbar() {
         <NavDropdown.Item><Link to="/signup" className="text-dark text-decoration-none">Sign Up</Link></NavDropdown.Item>
         <NavDropdown.Item><Link to="/favorites" className="text-dark text-decoration-none">Favorites</Link></NavDropdown.Item>
         <NavDropdown.Item><Link to="/reservations" className="text-dark text-decoration-none">Reservations</Link></NavDropdown.Item>
-        <NavDropdown.Divider />
         {/* change logout to use isLoggedIn useAuth */}
-        <NavDropdown.Item><Link to="/logout" className="text-dark text-decoration-none">Log Out</Link></NavDropdown.Item>
+        <NavDropdown.Item><Link to={useAuth} onClick={logout} className="text-dark text-decoration-none">Log Out</Link></NavDropdown.Item>
       </NavDropdown>
   </>
     </nav>
