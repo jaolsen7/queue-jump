@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "../util/auth";
-import { useMutation } from "@apollo/client"
-import { CREATE_USER, LOGIN } from "../util/mutations";
+import { useAuth } from "../util/auth";
 
 // This signup form is intentionally minimalist to reduce effort required to
 // customize it to your app's needs. See the excellent best practices guide for
@@ -31,7 +29,6 @@ const initialFormState = {
 export default function SignUp() {
   const { isLoggedIn, signup, loading, error } = useAuth();
   const [formState, setFormState] = useState(initialFormState);
-  const [createUser] = useMutation(CREATE_USER);
 
   useEffect(() => {
     if (error) {
@@ -57,9 +54,7 @@ export default function SignUp() {
       event.stopPropagation();
     }
     try {
-      const {data} = await createUser({variables: { ...formState }})
-      console.log(data)
-      useAuth.loggedIn(data.createUser.token);
+      signup(formState)
       setFormState(initialFormState);
     }
     catch(error) {
@@ -128,22 +123,22 @@ export default function SignUp() {
             id="new-fullName"
             type="fullName"
             name="fullName"
-            placeholder="Enter fullname"
+            placeholder="Enter full name"
             value={formState.fullName.value}
             onChange={handleInputChange}
           />
         </div>
         <div style={styles.formControl}>
-          <label htmlFor="new-phonenumber" style={styles.label}>
+          <label htmlFor="new-phoneNumber" style={styles.label}>
             Phone
           </label>
           <input
             disabled={loading}
-            id="new-phonenumber"
+            id="new-phoneNumber"
             type="phoneNumber"
             name="phoneNumber"
-            placeholder="Enter phoneNumber"
-            value={formState.password.value}
+            placeholder="(111) 111-1111"
+            value={formState.phoneNumber.value}
             onChange={handleInputChange}
           />
         </div>

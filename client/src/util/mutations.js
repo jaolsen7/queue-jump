@@ -10,7 +10,6 @@ mutation CreateUser($phoneNumber: String!, $fullName: String!, $email: String!, 
       full_name
       username
       email
-      password
     }
   }
 }`
@@ -29,7 +28,7 @@ export const LOGIN = gql`
 `;
 
 export const BOOK_RESERVATION = gql`
-  mutation bookReservation($reservationData: BookReservationInput!)
+  mutation bookReservation($reservationData: BookReservationInput!) {
     bookReservation(reservationData: $reservationData) {
       _id
     time
@@ -42,4 +41,4 @@ export const BOOK_RESERVATION = gql`
       email
     }
   }
-`;
+}`;

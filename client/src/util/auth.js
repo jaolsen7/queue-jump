@@ -108,17 +108,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signup = async ({ email, password, username }) => {
+  const signup = async ({ email, password, username, fullName, phoneNumber }) => {
     dispatch({ type: LOADING });
     try {
       // TODO: implement improved validation.
-      if (!email || !password || !username) {
+      if (!email || !password || !username || !phoneNumber || !fullName) {
         // TODO: implement improved error message
         throw new Error("Auth error. Invalid parameter received.");
       }
 
       const { data } = await createUser({
-        variables: { email, password, username },
+        variables: { email, password, username, fullName, phoneNumber },
       });
       dispatch({ type: LOGIN_SUCCESS, payload: data.createUser.token });
     } catch (error) {
