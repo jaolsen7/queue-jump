@@ -17,11 +17,14 @@ const resolvers = {
       if (!ctx.user) {
         throw new AuthenticationError("Must be logged in.");
       }
-      return User.findOne({ email: ctx.user.email });
+      return User.findOne({ email: ctx.user.email }).populate("favorites");
     },
-    reservations: async (parent, args, context) => {},
-    reservation: async (parent, args, context) => {},
-    favorites: async (parent, args, context) => {},
+    reservations: async (parent, args, context) => {
+      return Reservation.find({}).populate("restaurant");
+    },
+    reservation: async (parent, args, context) => {
+      return Reservation.findOne({ _id }).populate("restaurant");
+    },
   },
   Mutation: {
     createUser: async (parent, args) => {
