@@ -3,8 +3,8 @@ import { Container, Card, Button } from 'react-bootstrap';
 import sampleRestaurant2 from './sampleRestaurant2.jpg'
 import sampleRestaurant1 from './sampleRestaurant1.webp'
 
-
 export default function Reservations() {
+
     return (
         <>
           <div className='jumbotron text-light bg-success p-2'>
