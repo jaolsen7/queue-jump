@@ -39,6 +39,19 @@ mutation addFavorite($restaurantId: ID!) {
   }
 }`;
 
+export const REMOVE_FAVORITE = gql`
+mutation removeFavorite($restaurantId: ID!) {
+  removeFavorite(restaurantId: $restaurantId) {
+    favorites {
+      _id
+      restaurant_name
+      food_type
+      description
+      menu_link
+    }
+  }
+}`;
+
 export const BOOK_RESERVATION = gql`
   mutation bookReservation($reservationData: BookReservationInput!) {
     bookReservation(reservationData: $reservationData) {
