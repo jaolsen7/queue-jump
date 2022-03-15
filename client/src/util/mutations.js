@@ -10,7 +10,6 @@ mutation CreateUser($phoneNumber: String!, $fullName: String!, $email: String!, 
       full_name
       username
       email
-      password
     }
   }
 }`
