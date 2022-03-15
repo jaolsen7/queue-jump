@@ -21,7 +21,6 @@ export const LOGIN = gql`
       user {
         _id
         email
-        password
       }
     }
   }

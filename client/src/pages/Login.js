@@ -2,11 +2,6 @@ import { useEffect, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import { useAuth } from "../util/auth";
 
-// This signup form is intentionally minimalist to reduce effort required to
-// customize it to your app's needs. See the excellent best practices guide for
-// sign informs on web.dev https://web.dev/sign-in-form-best-practices/
-
-// TODO: customize styles or import styles with favorite css approach
 const styles = {
   formControl: {
     display: "flex",
@@ -28,25 +23,17 @@ export default function Login() {
   const [formState, setFormState] = useState(initialFormState);
   const location = useLocation();
 
-  useEffect(() => {
-    if (error) {
-      // TODO: replace window alert with custom alert
-      alert(error);
-    }
-  }, [error]);
-
-  const handleInputChange = (evt) => {
-    const { name, value } = evt.target;
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     login(formState);
   };
 
   if (isLoggedIn) {
-    // navigate to page user was redirected from or the home page.
     const from = location.state?.from?.pathname || "/";
     return <Navigate to={from} replace />
   }
