@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../util/auth";
+import { AuthProvider, useAuth } from "../util/auth";
+import { useMutation } from "@apollo/client"
+import { CREATE_USER, LOGIN } from "../util/mutations";
 
 // This signup form is intentionally minimalist to reduce effort required to
 // customize it to your app's needs. See the excellent best practices guide for
@@ -20,6 +22,8 @@ const styles = {
 
 const initialFormState = {
   username: "",
+  fullName: "",
+  phoneNumber: "",
   email: "",
   password: "",
 };
@@ -27,6 +31,7 @@ const initialFormState = {
 export default function SignUp() {
   const { isLoggedIn, signup, loading, error } = useAuth();
   const [formState, setFormState] = useState(initialFormState);
+  const [createUser] = useMutation(CREATE_USER);
 
   useEffect(() => {
     if (error) {
@@ -34,6 +39,10 @@ export default function SignUp() {
       alert(error);
     }
   }, [error]);
+
+  // useEffect(() => {
+  //   return <Navigate to="/" replace />
+  // }, [isLoggedIn])
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -47,7 +56,15 @@ export default function SignUp() {
       event.preventDefault();
       event.stopPropagation();
     }
-    signup(formState);
+    try {
+      const {data} = await createUser({variables: { ...formState }})
+      console.log(data)
+      useAuth.loggedIn(data.createUser.token);
+      setFormState(initialFormState);
+    }
+    catch(error) {
+      console.error(error);
+    }
   };
 
   if (isLoggedIn) {
@@ -98,6 +115,34 @@ export default function SignUp() {
             type="password"
             name="password"
             placeholder="Enter password"
+            value={formState.password.value}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div style={styles.formControl}>
+          <label htmlFor="new-name" style={styles.label}>
+            Name
+          </label>
+          <input
+            disabled={loading}
+            id="new-fullName"
+            type="fullName"
+            name="fullName"
+            placeholder="Enter fullname"
+            value={formState.fullName.value}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div style={styles.formControl}>
+          <label htmlFor="new-phonenumber" style={styles.label}>
+            Phone
+          </label>
+          <input
+            disabled={loading}
+            id="new-phonenumber"
+            type="phoneNumber"
+            name="phoneNumber"
+            placeholder="Enter phoneNumber"
             value={formState.password.value}
             onChange={handleInputChange}
           />

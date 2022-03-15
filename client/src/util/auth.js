@@ -126,7 +126,13 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: ERROR, payload: error.message });
     }
   };
-
+  
+  const loggedIn = (idToken) => {
+    // Saves user token to localStorage
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
+  }
+  
   const logout = async () => {
     await client.clearStore();
     dispatch({ type: LOGOUT });
@@ -137,6 +143,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     signup,
+    loggedIn,
   };
   return <authCtx.Provider value={auth}>{children}</authCtx.Provider>;
 };
