@@ -18,18 +18,18 @@ export default function Home() {
         </Container>
       </div>
       <Container>
-        {restaurants.map((restaurants) => (
-          <Card key={restaurants._id} className="col-12 m-3 flex-row flex-wrap">
+        {restaurants.map((restaurants, index) => (
+          <Card key={restaurants._id} className="col-12 m-3 flex-row flex-wrap fs-4">
             <Card.Img
-              variant="left"
-              src={sampleRestaurant1}
+              variant={index % 2 === 0 ? "left" : "right"}
+              src={restaurants.photo_link}
               className="p-2 col-6"
             />
             <Card.Body className="col-6">
-              <Card.Title>{restaurants.restaurant_name}</Card.Title>
+              <Card.Title className="fs-1">{restaurants.restaurant_name}</Card.Title>
               <Card.Text>{restaurants.description}</Card.Text>
-              <Card.Text>{restaurants.food_type}</Card.Text>
-              <Card.Text>{restaurants.menu_link}</Card.Text>
+              <Card.Text>Style: {restaurants.food_type.join(" ")}</Card.Text>
+              <Card.Text><a href={restaurants.menu_link} className="text-decoration-none fs-3 text-black">Menu</a></Card.Text>
               <Button className="btn-block btn-success d-block">
                 Check for Reservations
               </Button>
