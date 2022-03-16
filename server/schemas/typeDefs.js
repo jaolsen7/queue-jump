@@ -57,7 +57,7 @@ const typeDefs = gql`
     removeFavorite(restaurantId: ID!): User
     createReservation(time: String, location: String, party_size: Int, restaurantId: ID): Reservation
     deleteReservation(reservationId: ID!): Reservation
-    bookReservation(reservationId: ID!): User
+    bookReservation(reservationId: ID!): Reservation
     fillReservation(userId: ID!): Reservation
     cancelReservation(reservationId: ID!): User
   }
