@@ -53,8 +53,8 @@ mutation removeFavorite($restaurantId: ID!) {
 }`;
 
 export const BOOK_RESERVATION = gql`
-  mutation bookReservation($reservationData: BookReservationInput!) {
-    bookReservation(reservationData: $reservationData) {
+  mutation bookReservation($reservationId: ID!) {
+    bookReservation(reservationId: $reservationId) {
       _id
     time
     location

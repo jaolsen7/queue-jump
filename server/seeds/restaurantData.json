@@ -4,20 +4,23 @@
     "food_type": "American",
     "description": "Wow this is eatery is great!",
     "menu_link": "https://www.eatcommonstock.com/menu",
-    "photo_link": "https://tse4.mm.bing.net/th?id=OIP.7t_IEym3---u0ho2OB1dXgAAAA&pid=Api"
+    "photo_link": "https://tse4.mm.bing.net/th?id=OIP.7t_IEym3---u0ho2OB1dXgAAAA&pid=Api",
+    "reservations": []
   },
   {
     "restaurant_name": "Tajima Ramen",
     "food_type": ["Japanese", "Ramen", "Noodles"],
     "description": "Such great noods!",
     "menu_link": "https://tajimasandiego.com/tajima-convoy-food-menu/",
-    "photo_link": "https://tse4.mm.bing.net/th?id=OIP.-KYeKwWGNS9G4Ppp4ikafgHaHa&pid=Api"
+    "photo_link": "https://tse4.mm.bing.net/th?id=OIP.-KYeKwWGNS9G4Ppp4ikafgHaHa&pid=Api",
+    "reservations": []
   },
   {
     "restaurant_name": "King & Queens Cantina",
     "food_type": ["Mexican", "Cocktails", "Catering"],
     "description": "Wow this is eatery is great!",
     "menu_link": "https://kingandqueencantina.com/san-diego-kqc/",
-    "photo_link": "https://kingofhappyhour-prod.s3.amazonaws.com/cities/1/bars/1432/bar_image/a0870558-3fd9-46da-b846-4f3c1db5748f/kqc.png"
+    "photo_link": "https://kingofhappyhour-prod.s3.amazonaws.com/cities/1/bars/1432/bar_image/a0870558-3fd9-46da-b846-4f3c1db5748f/kqc.png",
+    "reservations": []
   }
 ]

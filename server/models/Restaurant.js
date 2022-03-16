@@ -21,6 +21,12 @@ const restaurantSchema = new Schema({
   photo_link: {
     type: String,
   },
+  reservations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Reservation",
+  },
+],
 });
 
 const Restaurant = model("Restaurant", restaurantSchema);

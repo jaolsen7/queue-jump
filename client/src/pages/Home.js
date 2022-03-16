@@ -1,6 +1,5 @@
 import { useAuth } from "../util/auth";
 import { Container, Card, Button } from "react-bootstrap";
-import sampleRestaurant1 from "./sampleRestaurant1.webp";
 import { QUERY_RESTAURANTS } from "../util/queries";
 import { useQuery } from "@apollo/client";
 
