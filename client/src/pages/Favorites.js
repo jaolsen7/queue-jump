@@ -1,8 +1,16 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { QUERY_MYFAVORITES } from "../util/queries";
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { REMOVE_FAVORITE } from "../util/mutations";
+import React, { useState } from 'react';
 
 export default function Favorites() {
+
+  const [removeFavorite, addFavoriteState] = useMutation(REMOVE_FAVORITE)
+
+  const handleSubmit = async (restaurantId) => {
+    removeFavorite({variables: {restaurantId} })
+  };
 
   const { loading, data } = useQuery(QUERY_MYFAVORITES);
   
@@ -18,7 +26,7 @@ export default function Favorites() {
               </div>
               <Container>
             {favorites.map((favorites) => (
-                  <Card key={favorites._id} className="col-12 m-3">
+                  <Card key={favorites._id} value={favorites._id} className="col-12 m-3">
                     <Card.Img variant="left" src={favorites.photo_link} className="w-100 p-2" />
                     <Card.Body>
                       <Card.Title>{favorites.restaurant_name}</Card.Title>
@@ -27,7 +35,7 @@ export default function Favorites() {
                       <Button className='btn-block btn-success d-block'>
                         Check for Reservations!
                       </Button>
-                      <Button className='btn-block btn-danger my-2' /*onClick={() => handleDeleteBook(book.bookId)}*/>
+                      <Button className='btn-block btn-danger my-2' onClick={() => handleSubmit(favorites._id)}>
                         Remove From Favorites
                       </Button>
                     </Card.Body>
