@@ -3,6 +3,7 @@ import { Container, Card, Button } from "react-bootstrap";
 import { QUERY_RESTAURANTS } from "../util/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import { ADD_FAVORITE } from "../util/mutations";
+import { Navigate } from "react-router-dom";
 
 export default function Home() {
   const { loading, data } = useQuery(QUERY_RESTAURANTS);
@@ -12,7 +13,9 @@ export default function Home() {
   const [addFavorite, addFavoriteState] = useMutation(ADD_FAVORITE)
 
   const handleSubmit = async (restaurantId) => {
-    addFavorite({variables: {restaurantId} })
+    addFavorite({variables: {restaurantId} });
+    <Navigate to="/Favorites" />
+    window.location.reload("false");
   };
 
   const { isLoggedIn, user } = useAuth();
