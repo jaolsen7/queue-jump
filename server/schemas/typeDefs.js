@@ -37,7 +37,7 @@ const typeDefs = gql`
   type Query {
     "Find the logged in user."
     me: User
-    reservations: [Reservation]!
+    reservations: User
     reservation(reservationId: ID!): Reservation
     favorites: [Restaurant]
     restaurants: [Restaurant]
@@ -55,7 +55,7 @@ const typeDefs = gql`
     addFavorite(restaurantId: ID!): User
     removeFavorite(restaurantId: ID!): User
     bookReservation(reservationId: ID!): User
-    cancelReservation(reservationId: ID!): Reservation
+    cancelReservation(reservationId: ID!): User
   }
 
   type Auth {

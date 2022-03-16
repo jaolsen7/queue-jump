@@ -1,14 +1,12 @@
-import { useAuth } from "../util/auth";
 import { Container, Card, Button } from 'react-bootstrap';
 import { useQuery } from "@apollo/client";
-import { QUERY_RESERVATION } from "../util/queries";
+import { QUERY_MYRESERVATIONS } from "../util/queries";
 
 export default function Reservations() {
-  const { loading, data } = useQuery(QUERY_RESERVATION);
+  const { loading, data } = useQuery(QUERY_MYRESERVATIONS);
 
-  const reservations = data?.reservations || []
-
-  const { isLoggedIn, user } = useAuth();
+  const reservations = data?.me.reservations || []
+  console.log(reservations)
 
     return (
         <>

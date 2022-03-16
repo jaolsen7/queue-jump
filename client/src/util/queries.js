@@ -71,6 +71,22 @@ export const QUERY_MYFAVORITES = gql`
   }
 `;
 
+export const QUERY_MYRESERVATIONS = gql`
+  query myReservations {
+    me {
+      reservations {
+        time
+        location
+        party_size
+        restaurant {
+        photo_link
+        restaurant_name
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_RESTAURANTS = gql`
 query Restaurants {
   restaurants {
