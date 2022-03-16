@@ -11,7 +11,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     lastLogin: Date!
-    restaurant: [Restaurant]
+    reservations: [Reservation]
     favorites: [Restaurant]
   }
 
@@ -22,6 +22,7 @@ const typeDefs = gql`
     description: String!
     menu_link: String
     photo_link: String
+    reservations: [Reservation]
   }
 
   type Reservation {
@@ -31,11 +32,6 @@ const typeDefs = gql`
     party_size: Int!
     restaurant: Restaurant
     user: User
-  }
-
-  input BookReservationInput {
-    party_size: Int!
-    reservation_id: ID!
   }
 
   type Query {
@@ -58,7 +54,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addFavorite(restaurantId: ID!): User
     removeFavorite(restaurantId: ID!): User
-    bookReservation(reservationData: BookReservationInput!): Reservation
+    bookReservation(reservationId: ID!): User
     cancelReservation(reservationId: ID!): Reservation
   }
 

@@ -1,9 +1,14 @@
 import { useAuth } from "../util/auth";
 import { Container, Card, Button } from 'react-bootstrap';
-import sampleRestaurant2 from './sampleRestaurant2.jpg'
-import sampleRestaurant1 from './sampleRestaurant1.webp'
+import { useQuery } from "@apollo/client";
+import { QUERY_RESERVATION } from "../util/queries";
 
 export default function Reservations() {
+  const { loading, data } = useQuery(QUERY_RESERVATION);
+
+  const reservations = data?.reservations || []
+
+  const { isLoggedIn, user } = useAuth();
 
     return (
         <>
@@ -13,26 +18,24 @@ export default function Reservations() {
             </Container>
           </div>
           <Container className="d-flex justify-content-center flex-wrap">
-                  <Card className="col-12 m-3">
-                  <Card.Img variant="top" src={sampleRestaurant1} className="w-100 p-2" />
-                    <Card.Body className="">
-                      <Card.Title>Jeunu Et Jolie</Card.Title>
-                      <Card.Text>Your party of 2 is confirmed for 12:30 PM</Card.Text>
-                     <Button size="large" variant="danger" /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Cancel Reservation
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                  <Card className="col-12 m-3">
-                  <Card.Img variant="top" src={sampleRestaurant2} className="w-100 p-2" />
-                    <Card.Body>
-                      <Card.Title>Cafe Americano</Card.Title>
-                      <Card.Text>Your party of 4 is confirmed for 10 AM</Card.Text>
-                     <Button size="large" variant="danger" /*onClick={() => handleDeleteBook(book.bookId)}*/>
-                        Cancel Reservation
-                      </Button>
-                    </Card.Body>
-                  </Card>
+          {reservations.map((reservations, index) => (
+          <Card key={reservations._id} className="col-12 m-3 flex-row flex-wrap fs-4">
+            <Card.Img
+              variant={index % 2 === 0 ? "left" : "right"}
+              src={reservations.restaurant.photo_link}
+              className="p-2 col-6"
+            />
+            <Card.Body className="col-6">
+              <Card.Title className="fs-1">{reservations.restaurant.restaurant_name}</Card.Title>
+              <Card.Text>Time: {reservations.time}</Card.Text>
+              <Card.Text>Location: {reservations.location}</Card.Text>
+              <Card.Text>Party size: {reservations.party_size}</Card.Text>
+              <Button className="btn-block btn-danger d-block">
+                Cancel Reservation
+              </Button>
+            </Card.Body>
+          </Card>
+          ))}
           </Container>
         </>
       );

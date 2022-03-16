@@ -76,28 +76,33 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in to remove a favorite");
     },
-    bookReservation: async (parent, { reservationData }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("You need to be logged in!");
-      }
+    bookReservation: async (parent, { reservationId }, context) => {
+      if (context.user) {
+        return await User.findOneAndUpdate(
+          {_id: context.user._id},
+          { $addToSet: { reservations: reservationId }}
+        ).populate('reservations')     
+      }// if (!context.user) {
+      //   throw new AuthenticationError("You need to be logged in!");
+      // }
       
-      const reservation = await Reservation.findOne({
-        _id: reservationData.reservation_id,
-      });
-      if (!reservation) {
-        return null;
-      }
+      // const reservation = await Reservation.findOne({
+      //   _id: reservationData.reservation_id,
+      // });
+      // if (!reservation) {
+      //   return null;
+      // }
       
-      // if reservation is already claim return null
-      if (reservation.user) {
-        return null;
-      }
-      // reservation.user = context.user_id
-      reservation.party_size = reservationData.party_size
-      reservation.set("user", context.user._id)
-      await reservation.save(); 
-      await reservation.populate(["user", "restaurant"]); 
-      return reservation
+      // // if reservation is already claim return null
+      // if (reservation.user) {
+      //   return null;
+      // }
+      // // reservation.user = context.user_id
+      // reservation.party_size = reservationData.party_size
+      // reservation.set("user", context.user._id)
+      // await reservation.save(); 
+      // await reservation.populate(["user", "restaurant"]);
+      // return reservation
     },
     cancelReservation: async (parent, { reservationId }, context) => {
       if (context.user) {

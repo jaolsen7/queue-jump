@@ -36,10 +36,12 @@ const userSchema = new Schema(
     type: Date,
     default: Date.now,
   },
-  restaurant: {
+  reservations: [
+    {
       type: Schema.Types.ObjectId,
-      ref: "Restaurant",
+      ref: "Reservation",
   },
+],
   favorites: [
     {
       type: Schema.Types.ObjectId,
