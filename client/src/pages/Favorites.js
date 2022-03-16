@@ -1,13 +1,11 @@
 import { Container, Card, Button } from 'react-bootstrap';
-import sampleRestaurant2 from './sampleRestaurant2.jpg'
-import sampleRestaurant1 from './sampleRestaurant1.webp'
 import { QUERY_MYFAVORITES } from "../util/queries";
 import { useQuery } from '@apollo/client';
 
 export default function Favorites() {
 
   const { loading, data } = useQuery(QUERY_MYFAVORITES);
-
+  
   const favorites = data?.me.favorites || []
 
     return (
@@ -21,7 +19,7 @@ export default function Favorites() {
               <Container>
             {favorites.map((favorites) => (
                   <Card key={favorites._id} className="col-12 m-3">
-                    <Card.Img variant="left" src={sampleRestaurant1} className="w-100 p-2" />
+                    <Card.Img variant="left" src={favorites.photo_link} className="w-100 p-2" />
                     <Card.Body>
                       <Card.Title>{favorites.restaurant_name}</Card.Title>
                       <Card.Text>{favorites.food_type}</Card.Text>
