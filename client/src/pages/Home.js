@@ -1,12 +1,19 @@
 import { useAuth } from "../util/auth";
 import { Container, Card, Button } from "react-bootstrap";
 import { QUERY_RESTAURANTS } from "../util/queries";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import { ADD_FAVORITE } from "../util/mutations";
 
 export default function Home() {
   const { loading, data } = useQuery(QUERY_RESTAURANTS);
 
   const restaurants = data?.restaurants || [];
+  
+  const [addFavorite, addFavoriteState] = useMutation(ADD_FAVORITE)
+
+  const handleSubmit = async (restaurantId) => {
+    addFavorite({variables: {restaurantId} })
+  };
 
   const { isLoggedIn, user } = useAuth();
   return (
@@ -29,7 +36,7 @@ export default function Home() {
               <Card.Text>{restaurants.description}</Card.Text>
               <Card.Text>Style: {restaurants.food_type.join(" ")}</Card.Text>
               <Card.Text><a href={restaurants.menu_link} className="text-decoration-none fs-3">Menu</a></Card.Text>
-              <Button key={restaurants._id} className="btn-block btn-success d-block">
+              <Button className="btn-block btn-success d-block" type="submit" onClick={() => handleSubmit(restaurants._id)}>
                 Add to Favorites
               </Button>
             </Card.Body>
