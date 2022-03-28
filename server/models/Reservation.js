@@ -4,15 +4,15 @@ const User = require("./User");
 const reservationSchema = new Schema({
   time: {
     type: String,
-    required: true,
+    // required: true,
   },
   location: {
     type: String,
-    required: true,
+    // required: true,
   },
   party_size: {
     type: Number,
-    required: true,
+    // required: true,
   },
   restaurant: {
     type: Schema.Types.ObjectId,

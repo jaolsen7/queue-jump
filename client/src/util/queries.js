@@ -3,14 +3,12 @@ import { gql } from "@apollo/client";
 export const ME = gql`
   query me {
     me {
-      favorites {
-        _id
-        restaurant_name
-        food_type
-        description
-        menu_link
-        photo_link
-      }
+      _id
+      phone_number
+      full_name
+      username
+      email
+      lastLogin
     }
   }
 `;
@@ -96,5 +94,8 @@ query Restaurants {
     description
     menu_link
     photo_link
+    reservations {
+      _id
+    }
   }
 }`;
