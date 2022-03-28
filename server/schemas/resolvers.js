@@ -27,7 +27,7 @@ const resolvers = {
     },
     restaurants: async (parent, args, context) => {
       return await Restaurant.find({}).populate("reservations");
-    },
+    }
   },
   Mutation: {
     createUser: async (parent, args) => {

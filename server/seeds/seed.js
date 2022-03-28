@@ -15,6 +15,7 @@ db.once("open", async () => {
     reservations[0].set("restaurant", restaurants[0]._id);
     reservations[1].set("restaurant", restaurants[0]._id);
     reservations[2].set("restaurant", restaurants[1]._id);
+    reservations[3].set("restaurant", restaurants[2]._id)
 
     await reservations[0].save();
     await reservations[1].save();

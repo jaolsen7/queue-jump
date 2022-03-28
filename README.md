@@ -1,10 +1,10 @@
-# QueueJump
+# queue-jump
 
 ## Description
 
-The goal of this application is to fill canceled reservations so both restaraunts and users benefit. As such, this app allows users to search for nearby restaurants and book a reservation that had just been canceled.
 
-## [Test it out here!](https://github.com/Ozz760/QueueJump)
+
+## [Test it out here!]()
 
 ## Demo
 
@@ -34,21 +34,10 @@ Here is the technology used along with links to them where applicable:
 
 ## Credits
 
-Group Members: <br>
-- Github: [Chris Muto](https://github.com/chrismuto) 
-- Github: [Jason Olsen](https://github.com/jaolsen7)
-- Github: [Oscar Silva](https://github.com/Ozz760)
-
+Thanks to the assistance of my professor John (@median-man) and my groupmates Chris and Oscar (@chrismuto and @Ozz760).
 
 ## Questions
 
-If you have any additional questions, contact us below:<br />
-________________________________________
-Github: https://github.com/chrismuto<br>
-Email: ChrisMuto@gmail.com<br>
-________________________________________
+If you have any additional questions, contact me below:<br />
 Github: https://github.com/jaolsen7<br>
 Email: json.olsen@gmail.com<br>
-________________________________________
-Github: https://github.com/Ozz760<br>
-Email: oscarsilva2356@gmail.com<br>

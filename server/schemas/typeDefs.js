@@ -6,11 +6,11 @@ const typeDefs = gql`
 
   type User {
     _id: ID!
-    phone_number: String!
+    phone_number: String
     full_name: String!
     username: String!
     email: String!
-    lastLogin: Date!
+    lastLogin: Date
     reservations: [Reservation]
     favorites: [Restaurant]
   }
@@ -37,11 +37,9 @@ const typeDefs = gql`
   type Query {
     "Find the logged in user."
     me: User
-    reservations: User
-    favorites: [Restaurant]
-    restaurants: [Restaurant]
     all_reservations: [Reservation]
     reservation(reservationId: ID!): Reservation
+    restaurants: [Restaurant]
   }
 
   type Mutation {
@@ -55,10 +53,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addFavorite(restaurantId: ID!): User
     removeFavorite(restaurantId: ID!): User
-    createReservation(time: String, location: String, party_size: Int, restaurantId: ID): Reservation
-    deleteReservation(reservationId: ID!): Reservation
     bookReservation(reservationId: ID!): Reservation
-    fillReservation(userId: ID!): Reservation
     cancelReservation(reservationId: ID!): User
   }
 
