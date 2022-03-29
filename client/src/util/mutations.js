@@ -52,16 +52,6 @@ mutation removeFavorite($restaurantId: ID!) {
   }
 }`;
 
-export const CREATE_RESERVATION = gql`
-mutation CreateReservation($time: String, $location: String, $partySize: Int, $restaurantId: ID) {
-  createReservation(time: $time, location: $location, party_size: $partySize, restaurantId: $restaurantId) {
-    _id
-    time
-    location
-    party_size
-  }
-}`;
-
 export const BOOK_RESERVATION = gql`
   mutation bookReservation($reservationId: ID!) {
     bookReservation(reservationId: $reservationId) {
@@ -77,3 +67,13 @@ export const BOOK_RESERVATION = gql`
     }
   }
 }`;
+
+export const CANCEL_RESERVATION = gql`
+  mutation cancelReservation($reservationId: ID!) {
+    cancelReservation(reservationId: $reservationId) {
+      _id
+      user {
+        email
+      }
+    }
+  }`

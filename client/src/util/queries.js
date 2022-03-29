@@ -94,8 +94,5 @@ query Restaurants {
     description
     menu_link
     photo_link
-    reservations {
-      _id
-    }
   }
 }`;

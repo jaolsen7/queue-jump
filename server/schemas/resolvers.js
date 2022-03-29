@@ -17,7 +17,7 @@ const resolvers = {
       if (!ctx.user) {
         throw new AuthenticationError("Must be logged in.");
       }
-      return User.findOne({ email: ctx.user.email }).populate("favorites");
+      return User.findOne({ email: ctx.user.email }).populate("favorites").populate("reservations");
     },
     all_reservations: async (parent, args, context) => {
       return Reservation.find({}).populate("restaurant");
