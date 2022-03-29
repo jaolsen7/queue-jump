@@ -36,8 +36,7 @@ const typeDefs = gql`
   type Query {
     "Find the logged in user."
     me: User
-    all_reservations: [Reservation]
-    reservation(reservationId: ID!): Reservation
+    allReservations: [Reservation]
     restaurants: [Restaurant]
   }
 

@@ -20,6 +20,7 @@ db.once("open", async () => {
     await reservations[0].save();
     await reservations[1].save();
     await reservations[2].save();
+    await reservations[3].save();
 
     console.log("Restaurants and Reservations seeded!");
     process.exit(0);

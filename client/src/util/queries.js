@@ -1,19 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const ME = gql`
-  query me {
-    me {
-      _id
-      phone_number
-      full_name
-      username
-      email
-      lastLogin
-    }
-  }
-`;
-export const QUERY_RESERVATIONS = gql`
-  query Reservation {
+query Me {
+  me {
+    _id
+    phone_number
+    full_name
+    username
+    email
+    lastLogin
     reservations {
       _id
       time
@@ -21,18 +16,15 @@ export const QUERY_RESERVATIONS = gql`
       party_size
       restaurant {
         _id
-        restaurant_name
-        food_type
-        description
-        menu_link
-        photo_link
       }
     }
   }
+  }
+}
 `;
-export const QUERY_RESERVATION = gql`
-  query Reservation($reservationId: ID!) {
-    reservation(id: $reservationId) {
+export const QUERY_RESERVATIONS = gql`
+  query allReservations {
+    allReservations {
       _id
       time
       location
@@ -47,9 +39,7 @@ export const QUERY_RESERVATION = gql`
       }
       user {
         _id
-        phone_number
-        full_name
-        email
+        username
       }
     }
   }
@@ -70,19 +60,19 @@ export const QUERY_MYFAVORITES = gql`
 `;
 
 export const QUERY_MYRESERVATIONS = gql`
-  query myReservations {
-    me {
-      reservations {
-        time
-        location
-        party_size
-        restaurant {
-        photo_link
-        restaurant_name
-        }
+query myReservations {
+  me {
+    reservations {
+      _id
+      time
+      location
+      party_size
+      restaurant {
+        _id
       }
     }
   }
+}
 `;
 
 export const QUERY_RESTAURANTS = gql`

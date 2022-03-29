@@ -17,16 +17,13 @@ const resolvers = {
       if (!ctx.user) {
         throw new AuthenticationError("Must be logged in.");
       }
-      return User.findOne({ email: ctx.user.email }).populate("favorites").populate("reservations");
+      return await User.findOne({ email: ctx.user.email }).populate("favorites").populate("reservations");
     },
-    all_reservations: async (parent, args, context) => {
-      return Reservation.find({}).populate("restaurant");
-    },
-    reservation: async (parent, args, context) => {
-      return Reservation.findOne({ _id }).populate("restaurant");
+    allReservations: async (parent, args, context) => {
+      return await Reservation.find({}).populate("restaurant").populate("user");
     },
     restaurants: async (parent, args, context) => {
-      return await Restaurant.find({}).populate("reservations");
+      return await Restaurant.find({});
     }
   },
   Mutation: {
@@ -78,30 +75,6 @@ const resolvers = {
       }
       throw new AuthenticationError(
         "You need to be logged in to remove a favorite"
-      );
-    },
-    createReservation: async (
-      parent,
-      { time, location, party_size, restaurantId },
-      context
-    ) => {
-      if (context.user) {
-        const newReservation = await Reservation.create({
-          time: time,
-          location: location,
-          party_size: party_size,
-        });
-
-        const updatedRestaurant = await Restaurant.findOneAndUpdate(
-          { _id: restaurantId },
-          { $push: { reservations: newReservation._id } },
-          { new: true }
-        ).populate("reservations");
-
-        return { updatedRestaurant };
-      }
-      throw new AuthenticationError(
-        "You need to be logged in to add a review!"
       );
     },
     bookReservation: async (parent, { reservationId }, context) => {
