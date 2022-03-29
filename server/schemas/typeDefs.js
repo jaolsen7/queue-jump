@@ -22,7 +22,6 @@ const typeDefs = gql`
     description: String!
     menu_link: String
     photo_link: String
-    reservations: [Reservation]
   }
 
   type Reservation {
